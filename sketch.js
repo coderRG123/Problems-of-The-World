@@ -35,7 +35,7 @@ function preload(){
   //level1
   ocean=loadImage("Images/Ocean.jpeg");
   trashIMG=loadImage("Images/Water bottle.png");
-  paperIMG=loadImage("Images/paper.png");
+  paperIMG=loadImage("Images/Paper.png");
   cokeIMG=loadImage("Images/Coke.png");
 
 //level2
