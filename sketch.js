@@ -1,4 +1,4 @@
-var gameState="Start";
+var gameState="Note2";
 var info;
 var start;
 //level 1
@@ -11,7 +11,7 @@ var cokeIMG, coke;
 //level2
 var track;
 var carIMG, car;
-var treeIMG, tree;
+var car2IMG, car2;
 var distance=0;
 
 //level3
@@ -41,7 +41,7 @@ function preload(){
 //level2
   track=loadImage("Images/Road.jpg");
   carIMG=loadImage("Images/Car.png");
-  treeIMG=loadImage("Images/Tree.png");
+  car2IMG=loadImage("Images/Car2.png");
 
   //level3
   Artic=loadImage("Images/Artic.png");
@@ -82,9 +82,9 @@ info.position(450, 250);
  car.addImage(carIMG);
  car.scale=0.2;
 
- tree=createSprite(300, -100);
- tree.addImage(treeIMG);
- tree.scale=0.8;
+ car2=createSprite(300, -100);
+ car2.addImage(car2IMG);
+ car2.scale=0.4;
 
  //level3
  pbear=createSprite(200, -100, 20, 20);
@@ -230,12 +230,12 @@ if(gameState==="Note2"){
   textSize(15);
   start.hide();
   info.hide();
-  text("Me and my friends went on a road trip and we noticed that there", 10, 50);
-  text("there were trees on the roads. Help us avoid the trees", 10, 100);
+  text("Me and my friends went on a road trip.", 10, 50);
+  text("help us drive to our destination!", 10, 100);
   text("PRESS SPACE TO PLAY", 100, 350);
   if(keyDown("space")){
     gameState="Level2";
-    tree.y=100;
+    car2.y=100;
     car.y=350;
   }
 }
@@ -256,37 +256,35 @@ if(gameState==="Level2"){
     car.x-=5;
   }
 
-  tree.y+=6
+  car2.y+=8
 
-  if(tree.y>400){
-    tree.y=50
-    tree.x=random(70, 330);
+  if(car2.y>400){
+    car2.y=50
+    car2.x=random(70, 330);
   }
-if(car.isTouching(tree)){
-  tree.y=50;
+if(car.isTouching(car2)){
+  car2.y=50;
   car.x=200;
-  tree.x=random(70, 330);
+  car2.x=random(70, 330);
   distance=0;
 }
 
 if(distance>1000){
-  if(tree.y>390){
-    background(255);
-    distance=1000;
+  car2.x=700;
+  car.y-=8;
+  distance=1100;
+  if(car.y<0){
+    gameState="Info"
     car.y=-100;
-    tree.x=500;
-    gameState="Info";
   }
 }
 }
+
 if(gameState==="Info"){
   start.hide();
   info.hide();
-  text("Did you know that people are cuting down trees", 20, 50);
-  text("and are hurting our planet?", 20, 80);
-  text("Global warming is happeng because people are cutting trees.", 20, 110);
-  text("Tress help us breathe", 20, 140);
-  text("Did you know that using gasoline cars make Global warming happen?", 20, 170);
+  text("Did you know that using gasoline cars make Global warming happen?", 20, 50);
+ 
   fill("red");
   text("PRESS shift to Play", 100, 350);
   if(keyDown("shift")){
@@ -443,7 +441,7 @@ info.hide();
 fill("red");
 textSize(25);
 text("WE NEED TO KEEP OUR", 50, 200);
-text("PLANET SAVE", 100, 250);
+text("PLANET SAFE", 100, 250);
 
 }
 
